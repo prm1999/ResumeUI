@@ -1,4 +1,5 @@
 import 'package:Resume/home.dart';
+import 'package:Resume/resume.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,18 +14,17 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-      return MaterialApp(
+    return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Personal Information',
         theme: ThemeData(
           primaryColor: Colors.blueAccent,
         ),
-         initialRoute: HomePage.routeNamed,
+        initialRoute: HomePage.routeNamed,
         routes: {
-             HomePage.routeNamed: (BuildContext context) => HomePage(),
-            Resume.routeNamed: (BuildContext context) => Resume(),
-         
-      );
-    
+          HomePage.routeNamed: (BuildContext context) => HomePage(),
+          Resume.routeNamed: (BuildContext context) => Resume(),
+        }
+        );
   }
 }
