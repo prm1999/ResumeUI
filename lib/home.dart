@@ -5,9 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/material.dart';
 
-
 import 'dart:core';
-
 
 class HomePage extends StatefulWidget {
   static const String routeNamed = 'HomePage';
@@ -18,7 +16,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-    Firestore firestore = Firestore.instance;
+
 
   String firstName;
   String lastName;
@@ -26,6 +24,7 @@ class _HomePageState extends State<HomePage> {
   String phoneNo;
   String address;
   String qualification;
+
 
   @override
   Widget build(BuildContext context) {
@@ -120,7 +119,6 @@ class _HomePageState extends State<HomePage> {
 
                           if (formKey.currentState.validate()) {
                             try {
-                        
                               await firestore
                                   .collection('resume')
                                   .document()
@@ -132,7 +130,7 @@ class _HomePageState extends State<HomePage> {
                                 "address": address,
                                 "qualification": qualification
                               });
-                               Navigator.pushNamed(context,HomePage.routeNamed);
+                              Navigator.pushNamed(context, HomePage.routeNamed);
                             } catch (e) {
                               print("signup error");
                               print(e);

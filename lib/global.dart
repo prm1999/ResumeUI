@@ -1,3 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+
+  Firestore firestore = Firestore.instance;
 String validateEmail(String email) {
   if (email == null || email.isEmpty) return 'Required !!!';
   Pattern pattern =
@@ -28,3 +32,15 @@ String requiredString(String value) {
   return null;
 }
 
+
+  void getdata() async {
+    QuerySnapshot querySnapshot =
+        await firestore.collection('resume').getDocuments();
+
+    querySnapshot.documents.forEach((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.data['gmail'] == "maurya1234@gmail.com") {
+        print(documentSnapshot.data['firstName']);
+            print(documentSnapshot.data['lastName']);
+      }
+    });
+  }
