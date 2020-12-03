@@ -1,6 +1,5 @@
 import 'package:Resume/custom_button.dart';
 import 'package:Resume/custom_textfield.dart';
-import 'package:Resume/global.dart';
 import 'package:Resume/resume.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +12,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+
+    String firstName;
+     String lastName;
+      String gmail;
+       String phoneNo;
+        String address;
+         String qualification;
 
   _navigateToResume() {
     Navigator.pushNamed(context,Resume.routeNamed);
@@ -53,61 +60,46 @@ class _HomePageState extends State<HomePage> {
                                   fit: BoxFit.fill)),
                         ),
                       ),
-
-
                                SizedBox(
                                height: 16,
                                 ),
 
-
-                    
-
-
                       CustomTextField(
                       size: false,
-                      hintText: 'name',
+                      hintText: 'First Name',
                   
                     ),
 
-
-
                     CustomTextField(
                       size: false,
-                      hintText: 'address',
-                      
-                   
+                      hintText: 'Last Name',
+                                         
                     ),
-
 
                        CustomTextField(
                       size: false,
-                      hintText: 'address',
-                      
-                   
+                      hintText: 'Gmail',    
                     ),
-
-
 
                    CustomTextField(
                       size: false,
-                      hintText: 'address',
+                      hintText: 'Phone Number',
                     
                       ),
 
 
                        CustomTextField(
                       size: false,
-                      hintText: 'address',
+                      hintText: 'Address',
                       
                    
                     ),
 
 
-   CustomTextField(
+                      CustomTextField(
                       size: false,
-                      hintText: 'address',
-                      
-                   
+                      hintText: 'Qualification',
+   
                     ),
 
 

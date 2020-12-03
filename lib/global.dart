@@ -1,14 +1,5 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-
-
-
-
-
-
-
 
 
 String validateEmail(String email) {
@@ -19,6 +10,8 @@ String validateEmail(String email) {
   return (!regex.hasMatch(email)) ? 'Valid Email!!' : null;
 }
 
+
+
 String validateName(String name) {
   String required = requiredString(name);
   if (required != null) return required;
@@ -26,6 +19,7 @@ String validateName(String name) {
   RegExp regex = new RegExp(pattern);
   return (!regex.hasMatch(name)) ? 'Valid Name!!' : null;
 }
+
 
 String validatePhone(String phone) {
   String required = requiredString(phone);
