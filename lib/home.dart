@@ -1,5 +1,6 @@
 import 'package:Resume/custom_button.dart';
 import 'package:Resume/custom_textfield.dart';
+import 'package:Resume/education.dart';
 import 'package:Resume/global.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -22,8 +23,8 @@ class _HomePageState extends State<HomePage> {
   String lastName;
   String gmail;
   String phoneNo;
-  String address;
   String qualification;
+  String Currentcity;
 
 
   @override
@@ -94,23 +95,23 @@ class _HomePageState extends State<HomePage> {
                           validator: validatePhone),
                       CustomTextField(
                           size: false,
-                          hintText: 'Address',
-                          onSaved: (value) {
-                            address = value;
-                          },
-                          validator: requiredString),
-                      CustomTextField(
-                          size: false,
                           hintText: 'Qualification',
                           onSaved: (value) {
                             qualification = value;
                           },
                           validator: requiredString),
-                      SizedBox(
+                   CustomTextField(
+                      size: false,
+                      hintText: 'CurrentCity',
+                      onSaved: (value) {
+                        Currentcity = value;
+                      },
+                      validator: requiredString),
+                              SizedBox(
                         height: 16,
                       ),
                       CustomButton(
-                        labelText: 'Next',
+                        labelText: ' Save And Next',
                         isLoading: false,
                         postIcon: Icons.arrow_forward,
                         visiblepostIcon: true,
@@ -127,10 +128,11 @@ class _HomePageState extends State<HomePage> {
                                 "lastName": lastName,
                                 "gmail": gmail,
                                 "phoneNo": phoneNo,
-                                "address": address,
-                                "qualification": qualification
+                                "qualification": qualification,
+                                "Currentcity": Currentcity,
+
                               });
-                              Navigator.pushNamed(context, HomePage.routeNamed);
+                              Navigator.pushNamed(context, Education.routeNamed);
                             } catch (e) {
                               print("signup error");
                               print(e);
