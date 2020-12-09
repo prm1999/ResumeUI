@@ -3,13 +3,16 @@ import 'package:Resume/custom_textfield.dart';
 import 'package:Resume/global.dart';
 import 'package:Resume/home.dart';
 import 'package:flutter/material.dart';
+import 'dart:core';
+
 
 class Education extends StatefulWidget {
-  static const String routeNamed = 'resume';
+  static const String routeNamed = 'Education';
 
   @override
   _EducationState createState() => _EducationState();
 }
+
 
 class _EducationState extends State<Education> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -56,7 +59,7 @@ class _EducationState extends State<Education> {
                       child: Container(
                                 width: 120,
                                 height: 120,
-                    decoration: BoxDecoration(
+                                decoration: BoxDecoration(
                                     boxShadow: [
                                       BoxShadow(color: Colors.grey,
                                           blurRadius: 3,
@@ -78,6 +81,7 @@ class _EducationState extends State<Education> {
                                           onSaved: (value) {
                                             course = value;
                                           },
+                                        validator: requiredString,
                                         ),
                               CustomTextField(
                                 size: false,
@@ -85,6 +89,7 @@ class _EducationState extends State<Education> {
                                 onSaved: (value) {
                                   branch = value;
                                 },
+                                validator: requiredString,
                               ),
                           CustomTextField(
                             size: false,
@@ -92,6 +97,8 @@ class _EducationState extends State<Education> {
                             onSaved: (value) {
                               university = value;
                             },
+                          validator: requiredString,
+
                           ),
                     CustomTextField(
                       size: false,
@@ -99,13 +106,15 @@ class _EducationState extends State<Education> {
                       onSaved: (value) {
                         passing_year = value;
                       },
+                        validator: requiredString,
                     ),
                     CustomTextField(
                       size: false,
-                      hintText: 'percentage',
+                      hintText: 'percentage /CGPA',
                       onSaved: (value) {
                         percentage = value;
                       },
+                        validator: requiredString,
                     ),
                   SizedBox(
                      height: 16,
@@ -120,11 +129,10 @@ class _EducationState extends State<Education> {
 
                         if (formKey.currentState.validate()) {
                           try {
-                           await firestore
-                                .collection('resume')
+                              await firestore
+                                .collection('education')
                                 .document()
-                                .setData(
-                        {
+                                .setData({
                               "course": course,
                               "branch": branch,
                               "university": university,
@@ -133,6 +141,7 @@ class _EducationState extends State<Education> {
                               //"Currentcity": Currentcity,
 
                             });
+                             // print("hello");
                             Navigator.pushNamed(context, Education.routeNamed);
                           } catch (e) {
                             print("signup error");

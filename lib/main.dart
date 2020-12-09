@@ -1,5 +1,6 @@
 import 'package:Resume/home.dart';
 import 'package:Resume/education.dart';
+import 'package:Resume/secondaryschool.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         routes: {
           HomePage.routeNamed: (BuildContext context) => HomePage(),
           Education.routeNamed: (BuildContext context) => Education(),
+          SecondaryEdu.routeNamed:(BuildContext context)=>SecondaryEdu(),
           //Education,job,internship,Postition of responsibility,training,project,skills,worksamples,addition details
         }
         );
