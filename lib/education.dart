@@ -15,18 +15,17 @@ class Education extends StatefulWidget {
 
 
 class _EducationState extends State<Education> {
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
-
-
-  _navigateToHomePage() {
-    Navigator.pushNamed(context,HomePage.routeNamed);
-  }
-  String course;
+    String course;
   String branch;
   String university;
   String passing_year;
   String percentage;
+ 
+  final GlobalKey<FormState> form = GlobalKey<FormState>();
+
+  _navigateToHomePage() {
+    Navigator.pushNamed(context,HomePage.routeNamed);
+  }
 
 
   @override
@@ -52,105 +51,107 @@ class _EducationState extends State<Education> {
           child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 32),
               child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Center(
-                      child: Container(
-                                width: 120,
-                                height: 120,
-                                decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(color: Colors.grey,
-                                          blurRadius: 3,
-                                          offset: Offset(0, 5))
-                                    ],
-                                    shape: BoxShape.circle,
-                                    color: Colors.white,
-                                    image: DecorationImage(
-                                        image: AssetImage('assets/k.png'),
-                                        fit: BoxFit.fill)),
-                              ),
-                           ),
-                                        SizedBox(
-                                          height: 16,
-                                        ),
-                                        CustomTextField(
-                                          size: false,
-                                          hintText: 'course',
-                                          onSaved: (value) {
-                                            course = value;
-                                          },
-                                        validator: requiredString,
-                                        ),
-                              CustomTextField(
-                                size: false,
-                                hintText: 'branch',
-                                onSaved: (value) {
-                                  branch = value;
-                                },
-                                validator: requiredString,
-                              ),
-                          CustomTextField(
-                            size: false,
-                            hintText: 'university',
-                            onSaved: (value) {
-                              university = value;
-                            },
+                child: Form(
+                  key:form,
+                       child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Center(
+                        child: Container(
+                                  width: 120,
+                                  height: 120,
+                                  decoration: BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(color: Colors.grey,
+                                            blurRadius: 3,
+                                            offset: Offset(0, 5))
+                                      ],
+                                      shape: BoxShape.circle,
+                                      color: Colors.white,
+                                      image: DecorationImage(
+                                          image: AssetImage('assets/k.png'),
+                                          fit: BoxFit.fill)),
+                                ),
+                             ),
+                                          SizedBox(
+                                            height: 16,
+                                          ),
+                                          CustomTextField(
+                                            size: false,
+                                            hintText: 'course',
+                                            onSaved: (value) {
+                                              course = value;
+                                            },
+                                          validator: requiredString,
+                                          ),
+                                CustomTextField(
+                                  size: false,
+                                  hintText: 'branch',
+                                  onSaved: (value) {
+                                    branch = value;
+                                  },
+                                  validator: requiredString,
+                                ),
+                            CustomTextField(
+                              size: false,
+                              hintText: 'university',
+                              onSaved: (value) {
+                                university = value;
+                              },
+                            validator: requiredString,
+
+                            ),
+                      CustomTextField(
+                        size: false,
+                        hintText: 'passing_year',
+                        onSaved: (value) {
+                          passing_year = value;
+                        },
                           validator: requiredString,
-
-                          ),
-                    CustomTextField(
-                      size: false,
-                      hintText: 'passing_year',
-                      onSaved: (value) {
-                        passing_year = value;
-                      },
-                        validator: requiredString,
+                      ),
+                      CustomTextField(
+                        size: false,
+                        hintText: 'percentage /CGPA',
+                        onSaved: (value) {
+                          percentage = value;
+                        },
+                          validator: requiredString,
+                      ),
+                    SizedBox(
+                       height: 16,
                     ),
-                    CustomTextField(
-                      size: false,
-                      hintText: 'percentage /CGPA',
-                      onSaved: (value) {
-                        percentage = value;
-                      },
-                        validator: requiredString,
-                    ),
-                  SizedBox(
-                     height: 16,
-                  ),
-                    CustomButton(
-                      labelText: ' Save and Next',
-                      isLoading: false,
-                      postIcon: Icons.arrow_forward,
-                      visiblepostIcon: true,
-                      onTap: () async {
-                        formKey.currentState.save();
+                      CustomButton(
+                        labelText: ' Save and Next',
+                        isLoading: false,
+                        postIcon: Icons.arrow_forward,
+                        visiblepostIcon: true,
+                        onTap: () async {
+                          
+                          form.currentState.save();
+                          if (form.currentState.validate()) {
+                            try {
+                                await firestore
+                                  .collection('education')
+                                  .document()
+                                  .setData({
+                                "course": course,
+                                "branch": branch,
+                                "university": university,
+                                "passing_year": passing_year,
+                                "percentage": percentage,
+                                //"Currentcity": Currentcity,
 
-                        if (formKey.currentState.validate()) {
-                          try {
-                              await firestore
-                                .collection('education')
-                                .document()
-                                .setData({
-                              "course": course,
-                              "branch": branch,
-                              "university": university,
-                              "passing_year": passing_year,
-                              "percentage": percentage,
-                              //"Currentcity": Currentcity,
-
-                            });
-                             // print("hello");
-                            Navigator.pushNamed(context, Education.routeNamed);
-                          } catch (e) {
-                            print("signup error");
-                            print(e);
+                              });
+                              Navigator.pushNamed(context, Education.routeNamed);
+                            } catch (e) {
+                              print("signup error");
+                              print(e);
+                            }
                           }
-                        }
-                      },
-                    ),
-                  ],
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               )),
         ),

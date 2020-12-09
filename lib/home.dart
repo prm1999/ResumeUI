@@ -2,7 +2,7 @@ import 'package:Resume/custom_button.dart';
 import 'package:Resume/custom_textfield.dart';
 import 'package:Resume/education.dart';
 import 'package:Resume/global.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 import 'package:flutter/material.dart';
 
