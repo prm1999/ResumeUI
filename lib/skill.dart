@@ -57,27 +57,10 @@ class _SkillState extends State<Skill> {
                        child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Center(
-                        child: Container(
-                                  width: 120,
-                                  height: 120,
-                                  decoration: BoxDecoration(
-                                      boxShadow: [
-                                        BoxShadow(color: Colors.grey,
-                                            blurRadius: 3,
-                                            offset: Offset(0, 5))
-                                      ],
-                                      shape: BoxShape.circle,
-                                      color: Colors.white,
-                                      image: DecorationImage(
-                                          image: AssetImage('assets/k.png'),
-                                          fit: BoxFit.fill)),
-                                ),
-                             ),
-                                          SizedBox(
-                                            height: 16,
-                                          ),
-                                          CustomTextField(
+                          SizedBox(
+                            height: 16,
+                            ),
+                              CustomTextField(
                                             size: false,
                                             hintText: 'course',
                                             onSaved: (value) {

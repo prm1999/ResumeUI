@@ -16,6 +16,8 @@ class Education extends StatefulWidget {
 
 
 class _EducationState extends State<Education> {
+  String cobjective;
+  String skills;
   String course;
   String branch;
   String university;
@@ -35,7 +37,7 @@ class _EducationState extends State<Education> {
       child: Scaffold(
          appBar: AppBar(
           title: Container(
-              child: Text('Academic Qualification', style: TextStyle(color: Colors.black),)),
+              child: Text(' Career Objective and Academic Qualification', style: TextStyle(color: Colors.black),)),
           backgroundColor: Colors.grey[100],
           leading: new IconButton(
             icon: new Icon(
@@ -54,43 +56,77 @@ class _EducationState extends State<Education> {
                 child: Form(
                   key:form,
                        child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Center(
-                        child: Container(
-                                  width: 120,
-                                  height: 120,
-                                  decoration: BoxDecoration(
-                                      boxShadow: [
-                                        BoxShadow(color: Colors.grey,
-                                            blurRadius: 3,
-                                            offset: Offset(0, 5))
-                                      ],
-                                      shape: BoxShape.circle,
-                                      color: Colors.white,
-                                      image: DecorationImage(
-                                          image: AssetImage('assets/k.png'),
-                                          fit: BoxFit.fill)),
-                                ),
-                             ),
-                                          SizedBox(
-                                            height: 16,
-                                          ),
-                                          CustomTextField(
-                                            size: false,
-                                            hintText: 'course',
-                                            onSaved: (value) {
-                                              course = value;
-                                            },
-                                          validator: requiredString,
-                                          ),
-                                CustomTextField(
+                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                          Text("Career Objective"),
+                              CustomTextField(
+                                size: false,
+                                hintText: 'Career Objective',
+                                onSaved: (value) {
+                                  cobjective = value;
+                                },
+                                validator: requiredString,
+                              ),
+                          Text("Skills"),
+                              CustomTextField(
+                                size: false,
+                                hintText: 'Skill 1',
+                                onSaved: (value) {
+                                  skills = value;
+                                },
+                                validator: requiredString,
+                              ),
+                              CustomTextField(
+                                size: false,
+                                hintText: 'Skill 2',
+                                onSaved: (value) {
+                                  skills = value;
+                                },
+                                validator: requiredString,
+                              ),
+
+                              CustomTextField(
+                                size: false,
+                                hintText: 'Skill 3',
+                                onSaved: (value) {
+                                  skills = value;
+                                },
+                                validator: requiredString,
+                              ),
+                              CustomTextField(
+                                size: false,
+                                hintText: 'Skill 4',
+                                onSaved: (value) {
+                                  skills = value;
+                                },
+                                validator: requiredString,
+                              ),
+
+                              CustomTextField(
+                                size: false,
+                                hintText: 'Skill 5',
+                                onSaved: (value) {
+                                  skills = value;
+                                },
+                                validator: requiredString,
+                              ),
+
+                          Text("Academic Qualification"),
+                          CustomTextField(
+                            size: false,
+                            hintText: 'course',
+                            onSaved: (value) {
+                              course = value;
+                              },
+                            validator: requiredString,
+                          ),
+                        CustomTextField(
                                   size: false,
                                   hintText: 'branch',
                                   onSaved: (value) {
                                     branch = value;
-                                  },
-                                  validator: requiredString,
+                                    },
+                          validator: requiredString,
                                 ),
                             CustomTextField(
                               size: false,
@@ -101,25 +137,25 @@ class _EducationState extends State<Education> {
                             validator: requiredString,
 
                             ),
-                      CustomTextField(
-                        size: false,
-                        hintText: 'passing_year',
-                        onSaved: (value) {
-                          passing_year = value;
-                        },
-                          validator: requiredString,
-                      ),
+                        CustomTextField(
+                          size: false,
+                          hintText: 'passing_year',
+                          onSaved: (value) {
+                            passing_year = value;
+                          },
+                            validator: requiredString,
+                        ),
                          CustomTextField(
-                        size: false,
-                        hintText: 'percentage /CGPA',
-                        onSaved: (value) {
-                          percentage = value;
-                        },
-                          validator: requiredString,
-                      ),
-                       SizedBox(
-                       height: 16,
-                    ),
+                          size: false,
+                          hintText: 'percentage /CGPA',
+                          onSaved: (value) {
+                            percentage = value;
+                          },
+                            validator: requiredString,
+                        ),
+                        SizedBox(
+                        height: 16,
+                           ),
                           CustomButton(
                         labelText: ' Save and Next',
                         isLoading: false,
@@ -134,13 +170,17 @@ class _EducationState extends State<Education> {
                                   .collection('education')
                                   .document()
                                   .setData({
+                                  "Career Objective":cobjective,
+                                  "SKill1":skills,
+                                  "Skill2":skills,
+                                  "Skill3":skills,
+                                  "Skill 4":skills,
+                                  "skill5":skills,
                                 "course": course,
                                 "branch": branch,
                                 "university": university,
                                 "passing_year": passing_year,
                                 "percentage": percentage,
-                                //"Currentcity": Currentcity,
-
                               });
                               Navigator.pushNamed(context, School.routeNamed);
                             } catch (e) {
