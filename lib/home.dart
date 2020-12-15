@@ -1,10 +1,8 @@
 import 'package:Resume/custom_button.dart';
 import 'package:Resume/custom_textfield.dart';
+import 'package:Resume/careerobjandacademic.dart';
 import 'package:Resume/global.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'package:flutter/material.dart';
-
 import 'dart:core';
 
 class HomePage extends StatefulWidget {
@@ -18,12 +16,12 @@ class _HomePageState extends State<HomePage> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
 
-  String firstName;
-  String lastName;
+  String Name;
   String gmail;
   String phoneNo;
-  String address;
-  String qualification;
+  String status;
+  String currentcity;
+  String State;
 
 
   @override
@@ -63,54 +61,54 @@ class _HomePageState extends State<HomePage> {
                       ),
                       CustomTextField(
                         size: false,
-                        hintText: 'First Name',
+                        hintText: ' Full  Name',
                         onSaved: (value) {
-                          firstName = value;
+                          Name = value;
                         },
                         validator: requiredString,
                       ),
                       CustomTextField(
                         size: false,
-                        hintText: 'Last Name',
-                        onSaved: (value) {
-                          lastName = value;
-                        },
-                        validator: requiredString,
-                      ),
-                      CustomTextField(
-                        size: false,
-                        hintText: 'Gmail',
+                        hintText: 'Email Id',
                         onSaved: (value) {
                           gmail = value;
                         },
                         validator: validateEmail,
                       ),
                       CustomTextField(
-                          size: false,
-                          hintText: 'Phone Number',
-                          onSaved: (value) {
-                            phoneNo = value;
-                          },
-                          validator: validatePhone),
+                        size: false,
+                        hintText: 'Phone number',
+                        onSaved: (value) {
+                          phoneNo = value;
+                        },
+                        validator:validatePhone ,
+                      ),
                       CustomTextField(
                           size: false,
-                          hintText: 'Address',
+                          hintText: 'Status',
                           onSaved: (value) {
-                            address = value;
+                            status = value;
                           },
-                          validator: requiredString),
+                          validator:requiredString ),
                       CustomTextField(
                           size: false,
-                          hintText: 'Qualification',
+                          hintText: 'Currentcity',
                           onSaved: (value) {
-                            qualification = value;
+                            currentcity= value;
                           },
                           validator: requiredString),
+                   CustomTextField(
+                      size: false,
+                      hintText: 'State',
+                      onSaved: (value) {
+                        State= value;
+                      },
+                      validator: requiredString),
                       SizedBox(
                         height: 16,
                       ),
                       CustomButton(
-                        labelText: 'Next',
+                        labelText: ' Save And Next',
                         isLoading: false,
                         postIcon: Icons.arrow_forward,
                         visiblepostIcon: true,
@@ -123,14 +121,15 @@ class _HomePageState extends State<HomePage> {
                                   .collection('resume')
                                   .document()
                                   .setData({
-                                "firstName": firstName,
-                                "lastName": lastName,
-                                "gmail": gmail,
-                                "phoneNo": phoneNo,
-                                "address": address,
-                                "qualification": qualification
+                                "firstName": Name,
+                                "lastName":gmail ,
+                                "gmail": phoneNo,
+                                "phoneNo": status,
+                                "qualification": currentcity,
+                                "Currentcity":State ,
+
                               });
-                              Navigator.pushNamed(context, HomePage.routeNamed);
+                              Navigator.pushNamed(context, Education.routeNamed);
                             } catch (e) {
                               print("signup error");
                               print(e);
