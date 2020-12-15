@@ -1,6 +1,8 @@
 import 'package:Resume/home.dart';
-import 'package:Resume/education.dart';
-import 'package:Resume/secondaryschool.dart';
+import 'package:Resume/AcademicQualification.dart';
+import 'package:Resume/SchoolEducation.dart';
+import 'package:Resume/otherqualification.dart';
+import 'package:Resume/skill.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -25,7 +27,9 @@ class MyApp extends StatelessWidget {
         routes: {
           HomePage.routeNamed: (BuildContext context) => HomePage(),
           Education.routeNamed: (BuildContext context) => Education(),
-          SecondaryEdu.routeNamed:(BuildContext context)=>SecondaryEdu(),
+          School.routeNamed:(BuildContext context)=>School(),
+          OtherQualification.routeNamed:(BuildContext context)=>OtherQualification(),
+          Skill.routeNamed:(BuildContext context)=>Skill(),
           //Education,job,internship,Postition of responsibility,training,project,skills,worksamples,addition details
         }
         );

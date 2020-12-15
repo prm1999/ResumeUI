@@ -2,28 +2,32 @@ import 'package:Resume/custom_button.dart';
 import 'package:Resume/custom_textfield.dart';
 import 'package:Resume/global.dart';
 import 'package:Resume/home.dart';
+import 'package:Resume/SchoolEducation.dart';
+import 'package:Resume/skill.dart';
 import 'package:flutter/material.dart';
 import 'dart:core';
 
 
-class Education extends StatefulWidget {
-  static const String routeNamed = 'Education';
+class OtherQualification extends StatefulWidget {
+  static const String routeNamed = 'OtherQualification';
 
   @override
-  _EducationState createState() => _EducationState();
+  _OtherQualificationState createState() => _OtherQualificationState();
 }
 
 
-class _EducationState extends State<Education> {
-    String course;
-  String branch;
-  String university;
-  String passing_year;
-  String percentage;
+class _OtherQualificationState extends State<OtherQualification> {
+  String duniversity;
+  String dpassingyear;
+  String dmarks;
+  String oggraduation;
+  String oguniversity;
+  String ogpassing_year;
+  String ogmarks;
  
   final GlobalKey<FormState> form = GlobalKey<FormState>();
 
-  _navigateToHomePage() {
+  _navigateToSchool() {
     Navigator.pushNamed(context,HomePage.routeNamed);
   }
 
@@ -34,7 +38,7 @@ class _EducationState extends State<Education> {
       child: Scaffold(
          appBar: AppBar(
           title: Container(
-              child: Text('Education', style: TextStyle(color: Colors.black),)),
+              child: Text('Other Qualification', style: TextStyle(color: Colors.black),)),
           backgroundColor: Colors.grey[100],
           leading: new IconButton(
             icon: new Icon(
@@ -42,8 +46,7 @@ class _EducationState extends State<Education> {
               color: Colors.black,
               size: 26,
             ),
-
-            onPressed: _navigateToHomePage,
+            onPressed: _navigateToSchool,
           ),
         ),
         body: Container(
@@ -56,71 +59,64 @@ class _EducationState extends State<Education> {
                        child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Center(
-                        child: Container(
-                                  width: 120,
-                                  height: 120,
-                                  decoration: BoxDecoration(
-                                      boxShadow: [
-                                        BoxShadow(color: Colors.grey,
-                                            blurRadius: 3,
-                                            offset: Offset(0, 5))
-                                      ],
-                                      shape: BoxShape.circle,
-                                      color: Colors.white,
-                                      image: DecorationImage(
-                                          image: AssetImage('assets/k.png'),
-                                          fit: BoxFit.fill)),
-                                ),
-                             ),
-                                          SizedBox(
-                                            height: 16,
-                                          ),
+                      Text("Dipolma"),
+                        SizedBox(
+                     height: 16,
+                   ),
                                           CustomTextField(
                                             size: false,
-                                            hintText: 'course',
+                                            hintText: 'University',
                                             onSaved: (value) {
-                                              course = value;
+                                              duniversity = value;
                                             },
                                           validator: requiredString,
                                           ),
                                 CustomTextField(
                                   size: false,
-                                  hintText: 'branch',
+                                  hintText: 'Passing Year',
                                   onSaved: (value) {
-                                    branch = value;
+                                    dpassingyear = value;
                                   },
                                   validator: requiredString,
                                 ),
                             CustomTextField(
                               size: false,
-                              hintText: 'university',
+                              hintText: 'Marks',
                               onSaved: (value) {
-                                university = value;
+                                dmarks = value;
                               },
                             validator: requiredString,
 
                             ),
-                      CustomTextField(
+                        Text("Other Graduations"),
+                        CustomTextField(
                         size: false,
-                        hintText: 'passing_year',
+                        hintText: 'University',
                         onSaved: (value) {
-                          passing_year = value;
+                          oguniversity = value;
+                        },
+                          validator: requiredString,
+                      ),
+                         CustomTextField(
+                        size: false,
+                        hintText: 'Passing Year',
+                        onSaved: (value) {
+                          ogpassing_year = value;
                         },
                           validator: requiredString,
                       ),
                       CustomTextField(
                         size: false,
-                        hintText: 'percentage /CGPA',
+                        hintText: 'Marks',
                         onSaved: (value) {
-                          percentage = value;
+                          ogmarks = value;
                         },
-                          validator: requiredString,
+                        validator: requiredString,
                       ),
-                    SizedBox(
+                       SizedBox(
                        height: 16,
                     ),
-                      CustomButton(
+                          CustomButton(
                         labelText: ' Save and Next',
                         isLoading: false,
                         postIcon: Icons.arrow_forward,
@@ -134,15 +130,16 @@ class _EducationState extends State<Education> {
                                   .collection('education')
                                   .document()
                                   .setData({
-                                "course": course,
-                                "branch": branch,
-                                "university": university,
-                                "passing_year": passing_year,
-                                "percentage": percentage,
-                                //"Currentcity": Currentcity,
+                                "D University": duniversity,
+                                "D Passing Year": dpassingyear,
+                                "D marks": dmarks,
+                                "Other Graduation": oggraduation,
+                                "O university": oguniversity,
+                                "O Passing Year": ogpassing_year,
+                                  "O Marks":ogmarks,
 
                               });
-                              Navigator.pushNamed(context, Education.routeNamed);
+                              Navigator.pushNamed(context, Skill.routeNamed);
                             } catch (e) {
                               print("signup error");
                               print(e);
