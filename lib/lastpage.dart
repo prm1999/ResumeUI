@@ -17,11 +17,11 @@ class Skill extends StatefulWidget {
 
 
 class _SkillState extends State<Skill> {
-  String course;
-  String branch;
-  String university;
-  String passing_year;
-  String percentage;
+  String cocirrular;
+  String achivement;
+  String name;
+  String destignation;
+  String organisation;
  
   final GlobalKey<FormState> form = GlobalKey<FormState>();
 
@@ -36,7 +36,7 @@ class _SkillState extends State<Skill> {
       child: Scaffold(
          appBar: AppBar(
           title: Container(
-              child: Text('Skill', style: TextStyle(color: Colors.black),)),
+              child: Text('Extra Activity and References', style: TextStyle(color: Colors.black),)),
           backgroundColor: Colors.grey[100],
           leading: new IconButton(
             icon: new Icon(
@@ -55,59 +55,60 @@ class _SkillState extends State<Skill> {
                 child: Form(
                   key:form,
                        child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text("Co Cirrcular Activity"),
                           SizedBox(
                             height: 16,
                             ),
                               CustomTextField(
                                             size: false,
-                                            hintText: 'course',
+                                            hintText: 'Extra Activities',
                                             onSaved: (value) {
-                                              course = value;
+                                              cocirrular = value;
                                             },
                                           validator: requiredString,
                                           ),
                                 CustomTextField(
                                   size: false,
-                                  hintText: 'branch',
+                                  hintText: 'Extra Activities',
                                   onSaved: (value) {
-                                    branch = value;
+                                    cocirrular = value;
                                   },
                                   validator: requiredString,
                                 ),
+                            Text("References"),
                             CustomTextField(
                               size: false,
-                              hintText: 'university',
+                              hintText: 'name',
                               onSaved: (value) {
-                                university = value;
+                                name = value;
                               },
                             validator: requiredString,
 
                             ),
                       CustomTextField(
                         size: false,
-                        hintText: 'passing_year',
+                        hintText: 'Designation',
                         onSaved: (value) {
-                          passing_year = value;
+                          destignation = value;
                         },
                           validator: requiredString,
                       ),
                          CustomTextField(
                         size: false,
-                        hintText: 'percentage /CGPA',
+                        hintText: 'Organisation',
                         onSaved: (value) {
-                          percentage = value;
+                          organisation = value;
                         },
                           validator: requiredString,
-                      ),
-                       SizedBox(
+                        ),
+                        SizedBox(
                        height: 16,
-                    ),
+                         ),
                           CustomButton(
-                        labelText: ' Save and Next',
+                        labelText: ' Save ',
                         isLoading: false,
-                        postIcon: Icons.arrow_forward,
                         visiblepostIcon: true,
                         onTap: () async {
                           
@@ -118,15 +119,15 @@ class _SkillState extends State<Skill> {
                                   .collection('education')
                                   .document()
                                   .setData({
-                                "course": course,
-                                "branch": branch,
-                                "university": university,
-                                "passing_year": passing_year,
-                                "percentage": percentage,
+                                "Extra Cirriculum 1": cocirrular,
+                                "Extra Cirrcular 2": cocirrular,
+                                "Name": name,
+                                "Organisation": organisation,
+                                "Designation": destignation,
                                 //"Currentcity": Currentcity,
 
                               });
-                              Navigator.pushNamed(context, School.routeNamed);
+                              Navigator.pushNamed(context, HomePage.routeNamed);
                             } catch (e) {
                               print("signup error");
                               print(e);

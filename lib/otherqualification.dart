@@ -3,7 +3,7 @@ import 'package:Resume/custom_textfield.dart';
 import 'package:Resume/global.dart';
 import 'package:Resume/home.dart';
 import 'package:Resume/SchoolEducation.dart';
-import 'package:Resume/skill.dart';
+import 'package:Resume/lastpage.dart';
 import 'package:flutter/material.dart';
 import 'dart:core';
 

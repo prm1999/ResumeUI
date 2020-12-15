@@ -1,6 +1,6 @@
 import 'package:Resume/custom_button.dart';
 import 'package:Resume/custom_textfield.dart';
-import 'package:Resume/AcademicQualification.dart';
+import 'package:Resume/careerobjandacademic.dart';
 import 'package:Resume/global.dart';
 import 'package:flutter/material.dart';
 import 'dart:core';

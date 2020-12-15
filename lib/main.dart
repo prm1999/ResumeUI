@@ -1,8 +1,8 @@
 import 'package:Resume/home.dart';
-import 'package:Resume/AcademicQualification.dart';
+import 'package:Resume/careerobjandacademic.dart';
 import 'package:Resume/SchoolEducation.dart';
 import 'package:Resume/otherqualification.dart';
-import 'package:Resume/skill.dart';
+import 'package:Resume/lastpage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
